@@ -13,6 +13,16 @@ const agregarCurso = (e) => {
     }
 }
 
+const eliminarCurso = (e) => {
+    if (e.target.classList.contains('borrar-curso')) {
+        const cursoId = e.target.getAttribute('data-id');
+
+        articulosCarrito = articulosCarrito.filter( curso => curso.id !== cursoId );
+        
+        carritoHTML();
+    }
+}
+
 const leerDatosCurso = (curso) => {
     console.log(curso);
 
@@ -79,5 +89,7 @@ const limpiarHTML = () => {
 
 const cargarEventListeners = () => {
     listaCursos.addEventListener('click', agregarCurso);
+
+    carrito.addEventListener('click', eliminarCurso);
 }
 cargarEventListeners();
